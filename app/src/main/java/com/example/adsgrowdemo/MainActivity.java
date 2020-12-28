@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         mCallbackManager = CallbackManager.Factory.create();
         mAuth = FirebaseAuth.getInstance();
         LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
-        loginButton.setPermissions(Arrays.asList("email", "public_profile", "pages_show_list"));
+        loginButton.setPermissions(Arrays.asList("email", "public_profile", "pages_show_list", "pages_manage_ads"));
         loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {

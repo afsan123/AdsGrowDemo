@@ -25,18 +25,19 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class PageListActivity extends AppCompatActivity implements MyAdapter.OnPageClickListener {
+public class PageListActivity extends AppCompatActivity {
 
     private Button mLogoutBtn;
     private FirebaseAuth mAuth;
     private ArrayList<FBPage> fbPages=new ArrayList<>();
     private MyAdapter myAdapter;
+    private RecyclerView rv_page_list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_page_list);
-        RecyclerView rv_page_list = findViewById(R.id.rv_page_list);
-        myAdapter = new MyAdapter(this,fbPages, this::onPageClick);
+        rv_page_list = findViewById(R.id.rv_page_list);
+        myAdapter = new MyAdapter(this,fbPages);
         rv_page_list.setLayoutManager(new LinearLayoutManager(this));
         rv_page_list.setAdapter(myAdapter);
         mLogoutBtn = (Button) findViewById(R.id.logoutBtn);
@@ -103,8 +104,4 @@ public class PageListActivity extends AppCompatActivity implements MyAdapter.OnP
         finish();
     }
 
-    @Override
-    public void onPageClick(int position) {
-        fbPages.get(position);
-    }
 }
